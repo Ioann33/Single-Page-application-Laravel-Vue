@@ -6,6 +6,7 @@ use App\Http\Requests\DeskRequest;
 use App\Http\Resources\DeskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpaController extends Controller
 {
@@ -51,5 +52,9 @@ class SpaController extends Controller
     public function delete(Request $request){
         $task = Task::findOrFail($request -> id);
         $task->delete();
+    }
+
+    public function getAuthUser(){
+        return new DeskResource(Auth::user());
     }
 }

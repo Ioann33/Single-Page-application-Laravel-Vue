@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::group(['middleware' => 'auth:sanctum'], function (){
+    Route::get('/user', [\App\Http\Controllers\SpaController::class, 'getAuthUser']);
     Route::get('/all', [\App\Http\Controllers\SpaController::class, 'all']);
     Route::get('/get/{id}', [\App\Http\Controllers\SpaController::class, 'show']);
     Route::put('/update/{id}', [\App\Http\Controllers\SpaController::class, 'update']);

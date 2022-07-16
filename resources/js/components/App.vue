@@ -1,12 +1,12 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" style="margin-left: 15px" href="#" >My site</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="container">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" style="position: absolute; right: 50px">
                     <li class="nav-item active">
                         <router-link v-if="token" :to="{ name: 'home' }" class="nav-link nav-item">Home<span class="sr-only">(current)</span></router-link>
                     </li>

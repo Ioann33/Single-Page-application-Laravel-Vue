@@ -5349,7 +5349,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      right: null,
+      loading: true,
+      errored: false
+    };
+  },
+  mounted: function mounted() {
+    this.getUser();
+  },
+  methods: {
+    getUser: function getUser() {
+      var _this = this;
+
+      axios.get('/api/user').then(function (response) {
+        _this.right = response.data.data.name;
+      })["catch"](function (error) {
+        console.log(error);
+        _this.errored = true;
+      })["finally"](function () {
+        _this.loading = false;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -5364,6 +5398,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -5404,6 +5441,9 @@ __webpack_require__.r(__webpack_exports__);
           _this.$router.push({
             name: 'home'
           });
+        })["catch"](function (error) {
+          console.log(error);
+          _this.errored = true;
         });
       });
     }
@@ -5411,7 +5451,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       email: null,
-      password: null
+      password: null,
+      errored: null
     };
   }
 });
@@ -28744,110 +28785,123 @@ var render = function () {
       "nav",
       { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
       [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-          _vm._v("Navbar"),
-        ]),
+        _c(
+          "a",
+          {
+            staticClass: "navbar-brand",
+            staticStyle: { "margin-left": "15px" },
+            attrs: { href: "#" },
+          },
+          [_vm._v("My site")]
+        ),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "container" }, [
-          _c("ul", { staticClass: "navbar-nav" }, [
-            _c(
-              "li",
-              { staticClass: "nav-item active" },
-              [
+          _c(
+            "ul",
+            {
+              staticClass: "navbar-nav",
+              staticStyle: { position: "absolute", right: "50px" },
+            },
+            [
+              _c(
+                "li",
+                { staticClass: "nav-item active" },
+                [
+                  _vm.token
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link nav-item",
+                          attrs: { to: { name: "home" } },
+                        },
+                        [
+                          _vm._v("Home"),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("(current)"),
+                          ]),
+                        ]
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _vm.token
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link nav-item",
+                          attrs: { to: { name: "desks" } },
+                        },
+                        [_vm._v("Desks")]
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  !_vm.token
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link nav-item",
+                          attrs: { to: { name: "login" } },
+                        },
+                        [_vm._v("Login")]
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  !_vm.token
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link nav-item",
+                          attrs: { to: { name: "registration" } },
+                        },
+                        [_vm._v("Registration")]
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
                 _vm.token
                   ? _c(
-                      "router-link",
+                      "a",
                       {
                         staticClass: "nav-link nav-item",
-                        attrs: { to: { name: "home" } },
-                      },
-                      [
-                        _vm._v("Home"),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("(current)"),
-                        ]),
-                      ]
-                    )
-                  : _vm._e(),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _vm.token
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link nav-item",
-                        attrs: { to: { name: "desks" } },
-                      },
-                      [_vm._v("Desks")]
-                    )
-                  : _vm._e(),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                !_vm.token
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link nav-item",
-                        attrs: { to: { name: "login" } },
-                      },
-                      [_vm._v("Login")]
-                    )
-                  : _vm._e(),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                !_vm.token
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link nav-item",
-                        attrs: { to: { name: "registration" } },
-                      },
-                      [_vm._v("Registration")]
-                    )
-                  : _vm._e(),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _vm.token
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "nav-link nav-item",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.logout.apply(null, arguments)
+                        attrs: { href: "#" },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.logout.apply(null, arguments)
+                          },
                         },
                       },
-                    },
-                    [_vm._v("Log out")]
-                  )
-                : _vm._e(),
-            ]),
-          ]),
+                      [_vm._v("Log out")]
+                    )
+                  : _vm._e(),
+              ]),
+            ]
+          ),
         ]),
       ]
     ),
@@ -28899,18 +28953,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Main page")]),
+    _vm._v(" "),
+    _vm.loading
+      ? _c(
+          "div",
+          {
+            staticClass: "spinner-border",
+            staticStyle: { width: "3rem", height: "3rem" },
+            attrs: { role: "status" },
+          },
+          [_c("span", { staticClass: "sr-only" })]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("div", [
+          _vm.right === "Ioann"
+            ? _c("h2", { staticClass: "alert-success" }, [
+                _vm._v(
+                  "This is private page , you can see it if you are Ioann"
+                ),
+              ])
+            : _c("h2", { staticClass: "alert-danger" }, [
+                _vm._v(
+                  "You have no rights for watching this page because you are not Ioann"
+                ),
+              ]),
+        ])
+      : _vm._e(),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Main page")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28934,6 +29009,14 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm.errored
+      ? _c(
+          "div",
+          { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+          [_vm._v("\n        Login or password is invalid!\n    ")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c(
       "form",
       {
